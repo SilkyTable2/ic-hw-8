@@ -136,25 +136,6 @@ export class InfoCard extends LitElement {
 
         </div>
       </div>
-    
-      <div id="card" class="size">
-        <div id="head" class="top">
-          <h1> ${this.heading} </h1>
-        </div>
-        <div class="image"> <!-- i tried to implement mememaker as a <slot> or <template>, but it would not implement -->
-          <meme-maker image-url="${customImage}" 
-          top-text="Bing Chilling" bottom-text="bing chilling"></meme-maker> 
-          
-        <details class="details">
-          <summary>Details</summary>
-          <p>
-            <slot></slot>
-          </p>
-        </details>
-
-        </div>
-      </div>
-
       
     `;
   }

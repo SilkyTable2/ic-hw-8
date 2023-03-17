@@ -4,7 +4,7 @@ import "./info-card.js";
 
 export class Amogus extends LitElement {
     static get tag() {
-        return 'team-roster';
+        return 'amogus-list';
     }
     
     static get properties() {
