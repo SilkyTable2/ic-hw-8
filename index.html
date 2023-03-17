@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <base href="/">
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #ededed;
+    }
+    :host([accent]).info-card{
+      background-color: red;
+    }
+  </style>
+  <title>info-card</title>
+</head>
+
+<body>
+  <div>
+    <button class="cardbtn">Duplicate</button>
+    <button class="backgroundbtn cardbtn">Dark Mode/Light Mode</button>
+    <button class="deletebtn cardbtn">Delete Last Instance</button>
+    <button class="headingchangebtn cardbtn">Change Heading</button>
+    <button toggle-dropdown="">Toggle Details</button>
+  </div>
+  <div id="app">
+    <info-card>
+      Image above depicts Actor and WWE Wrestler John Cena attempting to promote his upcoming movie, Fast and the Furious 9, in mandarin towards the chinese viewer market after previously making a controversial claim. The image comes from a video, famously known for its ridiculous scenario and for its famous line "bīng qí lín", or "Bing Chilling" as what it is commonly known as around the internet.
+    </info-card>
+  </div>
+
+
+
+  <script type="module" src="./src/info-card.js"></script>
+  
+  <script>
+    document.body.style.backgroundColor="white";
+
+    document.querySelector('.cardbtn').addEventListener("click", (e) => { //duplicates card then places below current
+      const card = document.querySelector('info-card');
+      const copy = card.cloneNode(true);
+      document.querySelector('#app').appendChild(copy);
+    })
+
+    document.querySelector('.backgroundbtn').addEventListener("click", (e) => { //Changes card background color
+      if (document.querySelector('info-card').accent != true){
+        document.querySelector('info-card').accent = true;
+      }
+      else {
+        document.querySelector('info-card').accent = false;
+      }
+    })
+
+    document.querySelector('.deletebtn').addEventListener("click", (e) => { //deletes card copies
+      const deleter = document.querySelector('#app :last-child');
+      if (document.getElementById('app').childNodes.length > 3) { //the 3 childNodes account for #text, info-card, #text
+        deleter.remove();
+      }
+      })
+
+      document.querySelector('.headingchangebtn').addEventListener("click", (e) => { //renames heading to "Something Else"
+        document.querySelector('info-card').shadowRoot.getElementById("head").innerHTML = "<h1>Something Else<h1>";
+      })
+
+      document.querySelector('button[toggle-dropdown]').addEventListener("click", (e) => {
+        const togDetail = document.querySelector("info-card").shadowRoot.querySelector("details");
+        console.log(togDetail);
+        if (togDetail.getAttribute('open')) {
+          togDetail.removeAttribute('open');
+        }
+        else {
+          togDetail.setAttribute('open','open');
+        }
+      });
+
+      //-------------------
+  </script>
+</body>
+
+</html>
