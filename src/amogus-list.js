@@ -16,26 +16,22 @@ export class Amogus extends LitElement {
 
     constructor() {
         super();
-        this.topic = [
-            {
-                "heading": "Hit game, Among Us",
-                "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.imgflip.com%2F55h82e.jpg&f=1&nofb=1&ipt=598bf0d903eaf811e3775698c8e2e5e88f9261ca3886a327a2ce46d9e49fac4f&ipo=images",
-                "description": "sussus amogus"
-            },
-        
-            {
-                "heading": "Hit game, Among Us",
-                "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.imgflip.com%2F55h82e.jpg&f=1&nofb=1&ipt=598bf0d903eaf811e3775698c8e2e5e88f9261ca3886a327a2ce46d9e49fac4f&ipo=images",
-                "description": "sussus amogus"
-            },
-        
-            {
-                "heading": "Hit game, Among Us",
-                "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.imgflip.com%2F55h82e.jpg&f=1&nofb=1&ipt=598bf0d903eaf811e3775698c8e2e5e88f9261ca3886a327a2ce46d9e49fac4f&ipo=images",
-                "description": "sussus amogus"
-            }
-        ];
+        this.topic = [];
         this.title = "New Title";
+        this.updateList();
+    }
+
+    updateList() {
+        const address = new URL('../api/list', import.meta.url).href;
+        const data = fetch(address).then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            return [];
+        })
+        .then((data) => {
+            this.topic = data;
+        });
     }
 
     static get styles() {
@@ -59,7 +55,7 @@ export class Amogus extends LitElement {
         <div class='wrapper'>
             ${this.topic.map(topic => html`
             <div class="item">
-                <info-card heading="${topic.heading}" description="${topic.description}" image="${topic.image}"></info-card>
+                <info-card heading="${topic.heading}" description="${topic.description}" image="${topic.image}" topText="${topic.topText}"></info-card>
             </div>
             `)}
         </div>

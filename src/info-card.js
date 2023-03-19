@@ -23,6 +23,10 @@ export class InfoCard extends LitElement {
       description: {
         type: String,
         reflect: true
+      },
+      topText: {
+        type: String,
+        reflect: true
       }
     }
   }
@@ -112,9 +116,9 @@ export class InfoCard extends LitElement {
     super();
     this.accent = false;
     this.heading = 'John Cena Bing Chilling';
-    this.image = "";
+    this.image = customImage;
     this.description = "";
-  
+    this.topText = "";
   }
 
   render() {
@@ -125,7 +129,7 @@ export class InfoCard extends LitElement {
         </div>
         <div class="image"> <!-- i tried to implement mememaker as a <slot> or <template>, but it would not implement -->
           <meme-maker image-url="${this.image}" 
-          top-text=" " bottom-text=" "></meme-maker> 
+          top-text="${this.topText}" bottom-text=" "></meme-maker> 
           
         <details class="details">
           <summary>Details</summary>
