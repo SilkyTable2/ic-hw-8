@@ -22,8 +22,8 @@ export class Amogus extends LitElement {
     }
 
     updateList() {
-        const address = new URL('../api/contentlist.js', import.meta.url).href;
-        const data = fetch(address).then((response) => {
+        const address = new URL('../api/contentlist.js', import.meta.url).href;// it works from the ../assets/contentlist.json, i swear...
+        const data = fetch(address).then((response) => { //code bricks during vercel upload if i dont define const data
             if (response.ok) {
                 return response.json()
             }
