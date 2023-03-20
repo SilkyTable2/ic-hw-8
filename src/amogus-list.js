@@ -10,7 +10,7 @@ export class Amogus extends LitElement {
     static get properties() {
         return {
             topic: { type: Array },
-            title: { type: String }
+            title: { type: String },
         }
     }
 
@@ -46,16 +46,16 @@ export class Amogus extends LitElement {
         .item {
             display: inline-flex;
         }
-        `;
+    `;
     }
 
     render() {
         return html`
         <h2>${this.title}</h2>
         <div class='wrapper'>
-            ${this.topic.map(topic => html`
+            ${this.topic.map(topics => html`
             <div class="item">
-                <info-card heading="${topic.heading}" description="${topic.description}" image="${topic.image}" topText="${topic.topText}"></info-card>
+                <info-card heading="${topics.heading}" description="${topics.description}" image="${topics.image}" topText="${topics.topText}"></info-card>
             </div>
             `)}
         </div>
