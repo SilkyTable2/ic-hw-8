@@ -22,7 +22,7 @@ export class Amogus extends LitElement {
     }
 
     updateList() {
-        const address = new URL('../assets/contentlist.json', import.meta.url).href;
+        const address = new URL('../api/contentlist', import.meta.url).href;
         fetch(address).then((response) => {
             if (response.ok) {
                 return response.json()
