@@ -10,7 +10,7 @@ export class Amogus extends LitElement {
     static get properties() {
         return {
             topic: { type: Array },
-            title: { type: String },
+            title: { type: String }
         }
     }
 
